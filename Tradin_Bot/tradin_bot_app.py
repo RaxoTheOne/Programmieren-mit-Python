@@ -10,7 +10,7 @@ data = yf.download(ticker, start='2020-01-01', end='2023-12-31')
 if data.empty:
     print("❌ Fehler: Keine Kursdaten geladen.")
     exit()
-
+    
 # 2. SMAs berechnen
 data['SMA20'] = data['Close'].rolling(window=20).mean()
 data['SMA50'] = data['Close'].rolling(window=50).mean()
