@@ -1,0 +1,409 @@
+[
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "getpass",
+        "importPath": "getpass",
+        "description": "getpass",
+        "isExtraImport": true,
+        "detail": "getpass",
+        "documentation": {}
+    },
+    {
+        "label": "OptionParser",
+        "importPath": "optparse",
+        "description": "optparse",
+        "isExtraImport": true,
+        "detail": "optparse",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "peewee",
+        "description": "peewee",
+        "isExtraImport": true,
+        "detail": "peewee",
+        "documentation": {}
+    },
+    {
+        "label": "print_",
+        "importPath": "peewee",
+        "description": "peewee",
+        "isExtraImport": true,
+        "detail": "peewee",
+        "documentation": {}
+    },
+    {
+        "label": "__version__",
+        "importPath": "peewee",
+        "description": "peewee",
+        "isExtraImport": true,
+        "detail": "peewee",
+        "documentation": {}
+    },
+    {
+        "label": "CockroachDatabase",
+        "importPath": "playhouse.cockroachdb",
+        "description": "playhouse.cockroachdb",
+        "isExtraImport": true,
+        "detail": "playhouse.cockroachdb",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "playhouse.reflection",
+        "description": "playhouse.reflection",
+        "isExtraImport": true,
+        "detail": "playhouse.reflection",
+        "documentation": {}
+    },
+    {
+        "label": "yfinance",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yfinance",
+        "description": "yfinance",
+        "detail": "yfinance",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "kind": 6,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "class BaseModel(Model):\n    class Meta:\n        database = database\n\"\"\"\nUNKNOWN_FIELD = \"\"\"\\\nclass UnknownField(object):\n    def __init__(self, *_, **__): pass\n\"\"\"\nDATABASE_ALIASES = {\n    CockroachDatabase: ['cockroach', 'cockroachdb', 'crdb'],",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "UnknownField",
+        "kind": 6,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "class UnknownField(object):\n    def __init__(self, *_, **__): pass\n\"\"\"\nDATABASE_ALIASES = {\n    CockroachDatabase: ['cockroach', 'cockroachdb', 'crdb'],\n    MySQLDatabase: ['mysql', 'mysqldb'],\n    PostgresqlDatabase: ['postgres', 'postgresql'],\n    SqliteDatabase: ['sqlite', 'sqlite3'],\n}\nDATABASE_MAP = dict((value, key)",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "make_introspector",
+        "kind": 2,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "def make_introspector(database_type, database_name, **kwargs):\n    if database_type not in DATABASE_MAP:\n        err('Unrecognized database, must be one of: %s' %\n            ', '.join(DATABASE_MAP.keys()))\n        sys.exit(1)\n    schema = kwargs.pop('schema', None)\n    DatabaseClass = DATABASE_MAP[database_type]\n    db = DatabaseClass(database_name, **kwargs)\n    return Introspector.from_database(db, schema=schema)\ndef print_models(introspector, tables=None, preserve_order=False,",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "print_models",
+        "kind": 2,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "def print_models(introspector, tables=None, preserve_order=False,\n                 include_views=False, ignore_unknown=False, snake_case=True):\n    database = introspector.introspect(table_names=tables,\n                                       include_views=include_views,\n                                       snake_case=snake_case)\n    db_kwargs = introspector.get_database_kwargs()\n    header = HEADER % (\n        introspector.get_additional_imports(),\n        introspector.get_database_class().__name__,\n        introspector.get_database_name(),",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "print_header",
+        "kind": 2,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "def print_header(cmd_line, introspector):\n    timestamp = datetime.datetime.now()\n    print_('# Code generated by:')\n    print_('# python -m pwiz %s' % cmd_line)\n    print_('# Date: %s' % timestamp.strftime('%B %d, %Y %I:%M%p'))\n    print_('# Database: %s' % introspector.get_database_name())\n    print_('# Peewee version: %s' % peewee_version)\n    print_('')\ndef err(msg):\n    sys.stderr.write('\\033[91m%s\\033[0m\\n' % msg)",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "err",
+        "kind": 2,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "def err(msg):\n    sys.stderr.write('\\033[91m%s\\033[0m\\n' % msg)\n    sys.stderr.flush()\ndef get_option_parser():\n    parser = OptionParser(usage='usage: %prog [options] database_name')\n    ao = parser.add_option\n    ao('-H', '--host', dest='host')\n    ao('-p', '--port', dest='port', type='int')\n    ao('-u', '--user', dest='user')\n    ao('-P', '--password', dest='password', action='store_true')",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "get_option_parser",
+        "kind": 2,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "def get_option_parser():\n    parser = OptionParser(usage='usage: %prog [options] database_name')\n    ao = parser.add_option\n    ao('-H', '--host', dest='host')\n    ao('-p', '--port', dest='port', type='int')\n    ao('-u', '--user', dest='user')\n    ao('-P', '--password', dest='password', action='store_true')\n    engines = sorted(DATABASE_MAP)\n    ao('-e', '--engine', dest='engine', choices=engines,\n       help=('Database type, e.g. sqlite, mysql, postgresql or cockroachdb. '",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "get_connect_kwargs",
+        "kind": 2,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "def get_connect_kwargs(options):\n    ops = ('host', 'port', 'user', 'schema')\n    kwargs = dict((o, getattr(options, o)) for o in ops if getattr(options, o))\n    if options.password:\n        kwargs['password'] = getpass()\n    return kwargs\nif __name__ == '__main__':\n    raw_argv = sys.argv\n    parser = get_option_parser()\n    options, args = parser.parse_args()",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "HEADER",
+        "kind": 5,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "HEADER = \"\"\"from peewee import *%s\ndatabase = %s('%s'%s)\n\"\"\"\nBASE_MODEL = \"\"\"\\\nclass BaseModel(Model):\n    class Meta:\n        database = database\n\"\"\"\nUNKNOWN_FIELD = \"\"\"\\\nclass UnknownField(object):",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "database",
+        "kind": 5,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "database = %s('%s'%s)\n\"\"\"\nBASE_MODEL = \"\"\"\\\nclass BaseModel(Model):\n    class Meta:\n        database = database\n\"\"\"\nUNKNOWN_FIELD = \"\"\"\\\nclass UnknownField(object):\n    def __init__(self, *_, **__): pass",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_MODEL",
+        "kind": 5,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "BASE_MODEL = \"\"\"\\\nclass BaseModel(Model):\n    class Meta:\n        database = database\n\"\"\"\nUNKNOWN_FIELD = \"\"\"\\\nclass UnknownField(object):\n    def __init__(self, *_, **__): pass\n\"\"\"\nDATABASE_ALIASES = {",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "UNKNOWN_FIELD",
+        "kind": 5,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "UNKNOWN_FIELD = \"\"\"\\\nclass UnknownField(object):\n    def __init__(self, *_, **__): pass\n\"\"\"\nDATABASE_ALIASES = {\n    CockroachDatabase: ['cockroach', 'cockroachdb', 'crdb'],\n    MySQLDatabase: ['mysql', 'mysqldb'],\n    PostgresqlDatabase: ['postgres', 'postgresql'],\n    SqliteDatabase: ['sqlite', 'sqlite3'],\n}",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_ALIASES",
+        "kind": 5,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "DATABASE_ALIASES = {\n    CockroachDatabase: ['cockroach', 'cockroachdb', 'crdb'],\n    MySQLDatabase: ['mysql', 'mysqldb'],\n    PostgresqlDatabase: ['postgres', 'postgresql'],\n    SqliteDatabase: ['sqlite', 'sqlite3'],\n}\nDATABASE_MAP = dict((value, key)\n                    for key in DATABASE_ALIASES\n                    for value in DATABASE_ALIASES[key])\ndef make_introspector(database_type, database_name, **kwargs):",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_MAP",
+        "kind": 5,
+        "importPath": ".venv.bin.pwiz",
+        "description": ".venv.bin.pwiz",
+        "peekOfCode": "DATABASE_MAP = dict((value, key)\n                    for key in DATABASE_ALIASES\n                    for value in DATABASE_ALIASES[key])\ndef make_introspector(database_type, database_name, **kwargs):\n    if database_type not in DATABASE_MAP:\n        err('Unrecognized database, must be one of: %s' %\n            ', '.join(DATABASE_MAP.keys()))\n        sys.exit(1)\n    schema = kwargs.pop('schema', None)\n    DatabaseClass = DATABASE_MAP[database_type]",
+        "detail": ".venv.bin.pwiz",
+        "documentation": {}
+    },
+    {
+        "label": "ticker",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "ticker = 'TSLA'  # Oder ein anderer Ticker wie 'AAPL', 'MSFT'\ndata = yf.download(ticker, start='2020-01-01', end='2023-12-31')\n# Daten prüfen\nif data.empty:\n    print(\"❌ Fehler: Keine Kursdaten geladen.\")\n    exit()\n# 2. SMAs berechnen\ndata['SMA20'] = data['Close'].rolling(window=20).mean()\ndata['SMA50'] = data['Close'].rolling(window=50).mean()\n# 3. Signale erzeugen (Kreuzung der SMAs)",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "data = yf.download(ticker, start='2020-01-01', end='2023-12-31')\n# Daten prüfen\nif data.empty:\n    print(\"❌ Fehler: Keine Kursdaten geladen.\")\n    exit()\n# 2. SMAs berechnen\ndata['SMA20'] = data['Close'].rolling(window=20).mean()\ndata['SMA50'] = data['Close'].rolling(window=50).mean()\n# 3. Signale erzeugen (Kreuzung der SMAs)\ndata['Signal'] = 0",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "data['SMA20']",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "data['SMA20'] = data['Close'].rolling(window=20).mean()\ndata['SMA50'] = data['Close'].rolling(window=50).mean()\n# 3. Signale erzeugen (Kreuzung der SMAs)\ndata['Signal'] = 0\nfor i in range(1, len(data)):\n    if data['SMA20'].iloc[i - 1] < data['SMA50'].iloc[i - 1] and data['SMA20'].iloc[i] > data['SMA50'].iloc[i]:\n        data.loc[data.index[i], 'Signal'] = 1  # Kaufsignal\n    elif data['SMA20'].iloc[i - 1] > data['SMA50'].iloc[i - 1] and data['SMA20'].iloc[i] < data['SMA50'].iloc[i]:\n        data.loc[data.index[i], 'Signal'] = -1  # Verkaufssignal\ndata['Position'] = data['Signal']",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "data['SMA50']",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "data['SMA50'] = data['Close'].rolling(window=50).mean()\n# 3. Signale erzeugen (Kreuzung der SMAs)\ndata['Signal'] = 0\nfor i in range(1, len(data)):\n    if data['SMA20'].iloc[i - 1] < data['SMA50'].iloc[i - 1] and data['SMA20'].iloc[i] > data['SMA50'].iloc[i]:\n        data.loc[data.index[i], 'Signal'] = 1  # Kaufsignal\n    elif data['SMA20'].iloc[i - 1] > data['SMA50'].iloc[i - 1] and data['SMA20'].iloc[i] < data['SMA50'].iloc[i]:\n        data.loc[data.index[i], 'Signal'] = -1  # Verkaufssignal\ndata['Position'] = data['Signal']\n# 4. Backtest durchführen",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "data['Signal']",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "data['Signal'] = 0\nfor i in range(1, len(data)):\n    if data['SMA20'].iloc[i - 1] < data['SMA50'].iloc[i - 1] and data['SMA20'].iloc[i] > data['SMA50'].iloc[i]:\n        data.loc[data.index[i], 'Signal'] = 1  # Kaufsignal\n    elif data['SMA20'].iloc[i - 1] > data['SMA50'].iloc[i - 1] and data['SMA20'].iloc[i] < data['SMA50'].iloc[i]:\n        data.loc[data.index[i], 'Signal'] = -1  # Verkaufssignal\ndata['Position'] = data['Signal']\n# 4. Backtest durchführen\ninitial_cash = 10000\ncash = initial_cash",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "data['Position']",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "data['Position'] = data['Signal']\n# 4. Backtest durchführen\ninitial_cash = 10000\ncash = initial_cash\nshares = 0\nposition = 0\ntrades = 0\nfor i in range(len(data)):\n    price = float(data['Close'].iloc[i])  # <== float erzwingen!\n    if data['Position'].iloc[i] == 1 and position == 0:",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "initial_cash",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "initial_cash = 10000\ncash = initial_cash\nshares = 0\nposition = 0\ntrades = 0\nfor i in range(len(data)):\n    price = float(data['Close'].iloc[i])  # <== float erzwingen!\n    if data['Position'].iloc[i] == 1 and position == 0:\n        shares = cash / price\n        cash = 0",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "cash",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "cash = initial_cash\nshares = 0\nposition = 0\ntrades = 0\nfor i in range(len(data)):\n    price = float(data['Close'].iloc[i])  # <== float erzwingen!\n    if data['Position'].iloc[i] == 1 and position == 0:\n        shares = cash / price\n        cash = 0\n        position = 1",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "shares",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "shares = 0\nposition = 0\ntrades = 0\nfor i in range(len(data)):\n    price = float(data['Close'].iloc[i])  # <== float erzwingen!\n    if data['Position'].iloc[i] == 1 and position == 0:\n        shares = cash / price\n        cash = 0\n        position = 1\n        trades += 1",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "position",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "position = 0\ntrades = 0\nfor i in range(len(data)):\n    price = float(data['Close'].iloc[i])  # <== float erzwingen!\n    if data['Position'].iloc[i] == 1 and position == 0:\n        shares = cash / price\n        cash = 0\n        position = 1\n        trades += 1\n    elif data['Position'].iloc[i] == -1 and position == 1:",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "trades",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "trades = 0\nfor i in range(len(data)):\n    price = float(data['Close'].iloc[i])  # <== float erzwingen!\n    if data['Position'].iloc[i] == 1 and position == 0:\n        shares = cash / price\n        cash = 0\n        position = 1\n        trades += 1\n    elif data['Position'].iloc[i] == -1 and position == 1:\n        cash = shares * price",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "trade_log",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "trade_log = []\nposition = 0\ncash = initial_cash\nshares = 0\nfor i in range(len(data)):\n    date = data.index[i]\n    price = float(data['Close'].iloc[i])\n    signal = data['Position'].iloc[i]\n    if signal == 1 and position == 0:\n        shares = cash / price",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "position",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "position = 0\ncash = initial_cash\nshares = 0\nfor i in range(len(data)):\n    date = data.index[i]\n    price = float(data['Close'].iloc[i])\n    signal = data['Position'].iloc[i]\n    if signal == 1 and position == 0:\n        shares = cash / price\n        cash = 0",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "cash",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "cash = initial_cash\nshares = 0\nfor i in range(len(data)):\n    date = data.index[i]\n    price = float(data['Close'].iloc[i])\n    signal = data['Position'].iloc[i]\n    if signal == 1 and position == 0:\n        shares = cash / price\n        cash = 0\n        position = 1",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "shares",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "shares = 0\nfor i in range(len(data)):\n    date = data.index[i]\n    price = float(data['Close'].iloc[i])\n    signal = data['Position'].iloc[i]\n    if signal == 1 and position == 0:\n        shares = cash / price\n        cash = 0\n        position = 1\n        trade_log.append({\"Datum\": date, \"Aktion\": \"Kauf\", \"Preis\": price})",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "df_trades",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "df_trades = pd.DataFrame(trade_log)\ndf_trades.to_csv(\"trade_log.csv\", index=False)\nprint(\"💾 Trades wurden in 'trade_log.csv' gespeichert.\")\n# 5. Endkapital berechnen\nlast_price = float(data['Close'].iloc[-1])\nfinal_value = shares * last_price if position == 1 else cash\nprofit = final_value - initial_cash\n# 6. Ergebnisse anzeigen\nprint(\"=== BACKTEST ERGEBNISSE ===\")\nprint(f\"Aktie:             {ticker}\")",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "last_price",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "last_price = float(data['Close'].iloc[-1])\nfinal_value = shares * last_price if position == 1 else cash\nprofit = final_value - initial_cash\n# 6. Ergebnisse anzeigen\nprint(\"=== BACKTEST ERGEBNISSE ===\")\nprint(f\"Aktie:             {ticker}\")\nprint(f\"Zeitraum:          {data.index[0].date()} bis {data.index[-1].date()}\")\nprint(f\"Anzahl Trades:     {trades}\")\nprint(f\"Initiales Kapital: {initial_cash:.2f} $\")\nprint(f\"Endkapital:        {final_value:.2f} $\")",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "final_value",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "final_value = shares * last_price if position == 1 else cash\nprofit = final_value - initial_cash\n# 6. Ergebnisse anzeigen\nprint(\"=== BACKTEST ERGEBNISSE ===\")\nprint(f\"Aktie:             {ticker}\")\nprint(f\"Zeitraum:          {data.index[0].date()} bis {data.index[-1].date()}\")\nprint(f\"Anzahl Trades:     {trades}\")\nprint(f\"Initiales Kapital: {initial_cash:.2f} $\")\nprint(f\"Endkapital:        {final_value:.2f} $\")\nprint(f\"Gewinn/Verlust:    {profit:.2f} $\")",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    },
+    {
+        "label": "profit",
+        "kind": 5,
+        "importPath": "Tradin_Bot.tradin_bot_app",
+        "description": "Tradin_Bot.tradin_bot_app",
+        "peekOfCode": "profit = final_value - initial_cash\n# 6. Ergebnisse anzeigen\nprint(\"=== BACKTEST ERGEBNISSE ===\")\nprint(f\"Aktie:             {ticker}\")\nprint(f\"Zeitraum:          {data.index[0].date()} bis {data.index[-1].date()}\")\nprint(f\"Anzahl Trades:     {trades}\")\nprint(f\"Initiales Kapital: {initial_cash:.2f} $\")\nprint(f\"Endkapital:        {final_value:.2f} $\")\nprint(f\"Gewinn/Verlust:    {profit:.2f} $\")\nprint(\"===========================\")",
+        "detail": "Tradin_Bot.tradin_bot_app",
+        "documentation": {}
+    }
+]
